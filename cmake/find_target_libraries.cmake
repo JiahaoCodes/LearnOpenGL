@@ -1,0 +1,11 @@
+# 查找第三方库的函数
+function(find_target_libraries)
+    foreach(lib ${ARGN})
+        find_package(${lib} REQUIRED)
+        if(${lib}_FOUND)
+            message(STATUS "Found ${lib}: TRUE")
+        else()
+            message(FATAL_ERROR "Could not find ${lib}")
+        endif()
+    endforeach()
+endfunction()
